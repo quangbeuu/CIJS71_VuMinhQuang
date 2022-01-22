@@ -2,6 +2,8 @@ class Clock{
     // Quy ước những biến nào lưu giá trị thì dùng 
     // dấu _ 
 
+    // Khai báo biến toàn cục (global)
+    _intervalID;
     constructor(timer){
         this._timer = timer;
 
@@ -39,7 +41,7 @@ class Clock{
     startBtn(){
         this.$startBtn.addEventListener("click",()=>{
             this._timer = 0;
-            const time = setInterval(()=>{
+            this._intervalID = setInterval(()=>{
                 this.$timer.innerText = this._timer;
                 this._timer = this._timer + 1;
             },1000);
@@ -48,13 +50,15 @@ class Clock{
     pauseBtn(){
         this.$pauseBtn.addEventListener("click",() =>{
             // Cách clear tất cả setInterval
-            for (var i = 1; i < 99999; i++) window.clearInterval(i);
+            // for (var i = 1; i < 99999; i++) window.clearInterval(i);
+            clearInterval(this._intervalID);
         })
     }
 
     stopBtn(){
         this.$stopBtn.addEventListener("click",()=>{
-            for (var i = 1; i < 99999; i++) window.clearInterval(i);
+            // for (var i = 1; i < 99999; i++) window.clearInterval(i);
+            clearInterval(this._intervalID);
             this.$timer.innerText = 0;
         })
     }
