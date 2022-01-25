@@ -2,6 +2,8 @@ class Clock{
     // Quy ước những biến nào lưu giá trị thì dùng 
     // dấu _ 
 
+    // Quy ước những biến lưu các thẻ thì dùng dấu $
+
     // Khai báo biến toàn cục (global)
     _intervalID;
     constructor(timer){
