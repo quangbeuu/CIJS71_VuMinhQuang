@@ -17,7 +17,7 @@ class Clock{
         this.$startBtn.innerText = "Start"
         // this.$startBtn.classList.add("start");
         this.$startBtn.addEventListener("click", this.start)
-        // lúc này chưa chạy vì this lúc này là button 
+        // lúc này chưa chạy vì this trong this._timer lúc này là button 
         // => ràng buộc bằng bind hoặc dùng arrow function
         // (ko nên dùng bind)
 
@@ -62,6 +62,7 @@ class Clock{
     stop = () => {
         if(this._intervalID !== undefined){
             clearInterval(this._intervalID);
+            this.$timer = 0;
             this.$timer.innerText = 0;
         }
     }
