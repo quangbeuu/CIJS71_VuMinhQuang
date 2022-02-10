@@ -17,29 +17,12 @@ class Login{
         this.$email = new InputGroup("Email", "email","Enter your email");
         this.$password = new InputGroup("Password", "password","Enter your password");
 
-        // this.$emailLabel = document.createElement("label");
-        // this.$emailLabel.innerText = "Email";
-        // this.$emailInput = document.createElement("input");
-        // this.$emailInput.type = "text";
-        // this.$emailInput.placeholder = "Enter your email";
-        
-        // this.$pswLabel = document.createElement("label");
-        // this.$pswLabel.innerText = "Password";
-        // this.$pswInput = document.createElement("input");
-        // this.$pswInput.type = "password";
-        // this.$pswInput.placeholder = "Enter your password";
-    
-        // this.$loginBtn = document.createElement("button");
-        // this.$loginBtn.setAttribute("class","bg-yellow-300 hover:bg-yellow-400 px-8 py-2 text-gray-700 font-bold rounded-lg")
-        // this.$loginBtn.innerText = "Login"; 
-        // this.$loginBtn.type = "submit";
-
         this.$loginBtn = new InputButton("Login","submit");
     
         this.$goToRegister = document.createElement("span");
         this.$goToRegister.setAttribute("class","text-white ml-4 cursor-pointer")
         this.$goToRegister.innerText = "Don't have an account?"
-        this.$goToRegister.addEventListener("click", this.goToRegisterPage)
+        this.$goToRegister.addEventListener("click", this.goToRegisterPage)      
     }
 
     goToRegisterPage = () =>{
@@ -52,6 +35,12 @@ class Login{
         try{
             const email = this.$email.getValue();
             const password = this.$password.getValue();
+            if(email === ""){
+                this.$email.$error.innerText = "Email cannot be blank"
+            }
+            if(password === ""){
+                this.$password.$error.innerText = "Password cannot be blank"
+            }
             if(email && password){
                 // đăng nhập với email và password 
                 const response = await signInWithEmailAndPassword(
@@ -61,16 +50,6 @@ class Login{
                 );
                 const user = response.user;
                 if(user){
-                    // const mainScreen = new Main();
-                    // app.setActiveScreen(mainScreen)
-
-                    // => Đoạn này ko cần phải set screen
-                    // cho thằng main 
-                    
-                    // do hàm  onAuthStateChanged() khi 
-                    // login xong nó sẽ tự cập nhật trạng
-                    // thái để đổi sang thằng Main
-
                     alert("Login Successful")
                 }
             }
@@ -81,12 +60,6 @@ class Login{
     }
 
     render(container){
-        // this.$loginContainer.appendChild(this.$emailLabel)
-        // this.$loginContainer.appendChild(this.$emailInput)
-
-        // this.$loginContainer.appendChild(this.$pswLabel)
-        // this.$loginContainer.appendChild(this.$pswInput)
-
         this.$loginContainer.appendChild(this.$email.render());
         // render() này là ở class InputGroup trong file components
         

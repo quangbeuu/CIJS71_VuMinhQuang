@@ -11,6 +11,10 @@ class InputGroup {
         this.$input.type = inputType;
         this.$input.placeholder = placeholder;
         this.$input.setAttribute("class", "py-2 px-4 rounded-lg")
+
+        this.$error = document.createElement("p");
+        this.$error.innerText = ""
+        this.$error.setAttribute("class","text-red-500 font-semibold")
     }
 
     getValue(){
@@ -20,7 +24,7 @@ class InputGroup {
     render(){
         this.$container.appendChild(this.$label);
         this.$container.appendChild(this.$input);
-
+        this.$container.appendChild(this.$error)
         return this.$container;
     }
 }

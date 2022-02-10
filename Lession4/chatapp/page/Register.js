@@ -64,10 +64,21 @@ class Register {
     onSubmit = async (event) => {
         event.preventDefault();
         try{
+            const displayName = this.$displayName.getValue();
             const email = this.$email.getValue();
             // Hàm getValue ở inputGroup
             const password = this.$password.getValue();
             const consfirmPassword = this.$confirmPassword.getValue();
+
+            if(displayName === ""){
+                this.$displayName.$error.innerText = "Display name cannot be blank"
+            }
+            if(email === ""){
+                this.$email.$error.innerText = "Email cannot be blank"
+            }
+            if(password.length < 8){
+                this.$password.$error.innerText = "Use 8 characters or more for your password"
+            }
             if (password === consfirmPassword){
                 // Tạo người dùng mới 
                 // Hàm createUserWithEmailAndPassword là 1 hàm bất đồng
@@ -89,7 +100,7 @@ class Register {
                     app.setActiveScreen(loginScreen);
                 }
             }else{
-                alert("Passwords do not match");
+                this.$confirmPassword.$error.innerText = "Passwords do not match"
             }
         }catch(error){
             console.log("error", error);
