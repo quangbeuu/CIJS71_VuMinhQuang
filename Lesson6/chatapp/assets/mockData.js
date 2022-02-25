@@ -43,4 +43,34 @@ export const mockMessage = [
     conversationId: "a",
     senderId: "anonymous",
   },
+  {
+    content: "How are you?",
+    createdAt: 3,
+    conversationId: "a",
+    senderId: "quang",
+  },
+  {
+    content: "I'm fine",
+    createdAt: 4,
+    conversationId: "a",
+    senderId: "anonymous",
+  },
+  {
+    content: "How are you?",
+    createdAt: 3,
+    conversationId: "a",
+    senderId: "quang",
+  },
+  {
+    content: "I'm fine",
+    createdAt: 4,
+    conversationId: "a",
+    senderId: "anonymous",
+  },
+  {
+    content: "I'm fine",
+    createdAt: 4,
+    conversationId: "a",
+    senderId: "anonymous",
+  },
 ];

@@ -3,7 +3,10 @@ import MessageItem from "./MessageItem.js";
 class MessageList {
   constructor() {
     this.$container = document.createElement("div");
-    this.$container.setAttribute("class", "flex flex-1 flex-col p-4");
+    this.$container.setAttribute(
+      "class",
+      "flex flex-1 flex-col p-4 overflow-x-auto"
+    );
     // this.$container.textContent = "MessageList";
 
     this.renderMessages();

@@ -1,14 +1,21 @@
 class MessageItem {
   constructor(msg) {
     this.$container = document.createElement("div");
-    this.$container.setAttribute("class", "mb-8");
-
     this.$msg = document.createElement("p");
     this.$msg.textContent = msg.content;
-    this.$msg.setAttribute(
-      "class",
-      "bg-indigo-500 rounded-full px-4 py-2 mb-2 w-max text-white"
-    );
+
+    if (msg.senderId === "anonymous") {
+      this.$container.setAttribute("class", "mb-8 self-end");
+      this.$msg.setAttribute(
+        "class",
+        "bg-indigo-500 rounded-full px-4 py-2 mb-2 w-max text-white"
+      );
+    } else {
+      this.$msg.setAttribute(
+        "class",
+        "bg-zinc-400 rounded-full px-4 py-2 mb-2 w-max text-white"
+      );
+    }
 
     this.$time = document.createElement("p");
     // this.$time.textContent = msg.createdAt;
